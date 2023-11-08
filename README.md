@@ -9,3 +9,20 @@ lazy loading -
     2. wrap your component path in 'suspense' in the 'app' component
     3. add a fallback jsx (or Shimmer ui), so reacts knows what to render when the component is not available
 
+# Types of Testing
+    - Unit testing 
+    - Integration Testing
+    - e2e Testing
+
+# Redux
+    - Install @reduxjs/toolkit
+    - Install react-redux
+
+# Setting testing environment
+    - Install React testing library
+    - Install Jest
+    - Install Babel dependencies
+    - Configure Babel
+    - Configure Parcel Config file to disable default babel transpilation
+    - Jest Configuration
+    - jest-environment-jsdom (for version > Jest 28)

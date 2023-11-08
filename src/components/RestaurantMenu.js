@@ -26,8 +26,8 @@ export const RestaurantMenu = () => {
       <h2 className="m-8">
         {categories?.map((cat, index) => (
           <RestaurantCategory
-            showInfo = {index === showIndex && true}
-            key={restInfo?.cards[0]?.card?.card?.name}
+            key={restInfo?.cards[0]?.card?.card?.title}
+            showInfo={index === showIndex && true}
             data={cat.card?.card}
             setShowIndex={() => setShowIndex(index)}
           />

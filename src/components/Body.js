@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import data from "../utils/data.js";
 import RestCard, { promotedRestCard } from "./RestaurantCard.js";
 import { Link } from "react-router-dom";
 import useOnlineStatus from '../hooks/useOnlineStatus';
+import { UserContext } from "../utils/UserContext.js";
+import { ThemeContext } from "../utils/ThemeContext";
 
 const BodyComponent = () => {
   const [restList, setRestList] = useState([]);
   const [filteredList, setfilteredList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [filterBoolean, setFilterBoolean] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   const PromotedCard = promotedRestCard(RestCard);
+
+  const {loggedInUser, setUserName} = useContext(UserContext);
+
+  const darkThemeBg = theme === 'dark' ?  'bg-slate-400' : 'bg-white';
 
   useEffect(() => {
     fetchData();
@@ -29,8 +36,8 @@ const BodyComponent = () => {
   }
 
   return (
-    <div className="body ">
-      <div className="grid grid-cols-8 gap-2 justify-items-start m-4">
+    <div className={`body ${darkThemeBg}`}>
+      <div className="grid grid-cols-8 gap-2 p-4">
         <input
           className="focus:ring-offset-2 ring-2"
           value={searchText}
@@ -39,7 +46,7 @@ const BodyComponent = () => {
           }}
         ></input>
         <button
-          className="focus:ring "
+          className="focus:ring w-4"
           onClick={() => {
             const searchData = restList.filter((search) =>
               search.info.name
@@ -52,6 +59,11 @@ const BodyComponent = () => {
         >
           Search
         </button>
+        <div>
+          <label >Enter</label>
+          <input className="border border-black" value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
+        </div>
+
       </div>
       {/* <div className="filter">
         <button

@@ -1,19 +1,26 @@
 import food1 from "../../images/food1.jpeg";
 import { cdnURL } from "../utils/constants";
-// import data from "../utils/data.js"
+import { useContext } from "react";
+import { UserContext } from "../utils/UserContext";
+import { ThemeContext } from "../utils/ThemeContext";
+
 
 const RestCard = ({ resData }) => {
+  const { loggedInUser } = useContext(UserContext);
+  const { theme } = useContext(ThemeContext);
   const { name, cuisines, cloudinaryImageId, costForTwo, avgRatingString } =
     resData?.info;
+  const darkThemeBg = theme === 'dark' ?  'bg-slate-600 text-slate-50' : 'bg-gray-200 text-black';
 
   return (
-    <div className=" bg-gray-200 shadow-lg-200/50 rounded-md p-2">
-      <img className="rounded-lg" src={cdnURL + cloudinaryImageId} />
+    <div className={`${darkThemeBg} shadow-lg-200/50 rounded-md p-4 m-4`}>
+      <img className="p-4 rounded-lg" src={cdnURL + cloudinaryImageId} />
       <div className="text-left m-2">
         <h3 className="font-sans font-bold">{name}</h3>
         <h4 className="font-light">{cuisines.join(", ")}</h4>
         <h4 className="font-light">{costForTwo}</h4>
         <h4 className="font-light">{avgRatingString}</h4>
+        <h4>{loggedInUser}</h4>
       </div>
     </div>
   );

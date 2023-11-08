@@ -1,7 +1,15 @@
 import { cdnURL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItems } from "../redux/cartSlice";
+
 
 export const ItemList = (props) => {
   console.log("ITEM", props);
+  const dispatch = useDispatch();
+
+  handleClick = (item) => {
+    dispatch(addItems(item))
+  }
 
   return (
     <div>
@@ -22,7 +30,8 @@ export const ItemList = (props) => {
                 </p>
               </div>
               <div className="w-3/12 relative">
-                <button className="absolute bg-black text-white rounded-md w-10 bottom-0 left-0 text-sm shadow-lg">
+                <button className="absolute bg-black text-white rounded-md w-10 bottom-0 left-0 text-sm shadow-lg" 
+                onClick={() => handleClick(item)}>
                   ADD
                 </button>
                 <img
