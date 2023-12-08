@@ -40,6 +40,7 @@ const BodyComponent = () => {
       <div className="grid grid-cols-8 gap-2 p-4">
         <input
           className="focus:ring-offset-2 ring-2"
+          data-testid = "searchInput"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
@@ -60,26 +61,29 @@ const BodyComponent = () => {
           Search
         </button>
         <div>
-          <label >Enter</label>
-          <input className="border border-black" value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
+          <label>Enter</label>
+          <input data-testid = "username" 
+          name="username"
+          className="border border-black" 
+          value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
         </div>
 
       </div>
-      {/* <div className="filter">
+      <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
             const topRatedList = restList.filter(
-              (rest) => rest.info.avgRating > 4.1
+              (rest) => rest.info.avgRating >= 4.3
             );
-            setRestList(topRatedList);
+            setfilteredList(topRatedList);
             setFilterBoolean(true);
 
           }}
         >
           Top Rated Restaurants
         </button>
-      </div> */}
+      </div>
       <div className="grid grid-cols-4 gap-4 m-4">
         {filteredList.map((res) => (
           <Link key={res.info.id} to={'/restaurants/' + res.info.id}>

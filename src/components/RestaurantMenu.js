@@ -2,7 +2,7 @@ import { useState } from "react";
 import useRestaurantMenu from "../hooks/useRestaurantMenu";
 import { RestaurantCategory } from "./RestaurantCategory";
 
-export const RestaurantMenu = () => {
+const RestaurantMenu = () => {
   const restInfo = useRestaurantMenu(); //custom hook
   const [showIndex, setShowIndex] = useState(null);
 
@@ -26,7 +26,7 @@ export const RestaurantMenu = () => {
       <h2 className="m-8">
         {categories?.map((cat, index) => (
           <RestaurantCategory
-            key={restInfo?.cards[0]?.card?.card?.title}
+            key={restInfo?.cards[0]?.card?.card?.info.imageId}
             showInfo={index === showIndex && true}
             data={cat.card?.card}
             setShowIndex={() => setShowIndex(index)}
@@ -36,3 +36,5 @@ export const RestaurantMenu = () => {
     </div>
   );
 };
+
+export default RestaurantMenu;

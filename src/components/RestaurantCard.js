@@ -6,6 +6,7 @@ import { ThemeContext } from "../utils/ThemeContext";
 
 
 const RestCard = ({ resData }) => {
+  // console.log('Resdata', resData)
   const { loggedInUser } = useContext(UserContext);
   const { theme } = useContext(ThemeContext);
   const { name, cuisines, cloudinaryImageId, costForTwo, avgRatingString } =
@@ -13,7 +14,7 @@ const RestCard = ({ resData }) => {
   const darkThemeBg = theme === 'dark' ?  'bg-slate-600 text-slate-50' : 'bg-gray-200 text-black';
 
   return (
-    <div className={`${darkThemeBg} shadow-lg-200/50 rounded-md p-4 m-4`}>
+    <div data-testid="restCard" className={`${darkThemeBg} shadow-lg-200/50 rounded-md p-4 m-4`}>
       <img className="p-4 rounded-lg" src={cdnURL + cloudinaryImageId} />
       <div className="text-left m-2">
         <h3 className="font-sans font-bold">{name}</h3>

@@ -6,19 +6,19 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { RestaurantMenu } from "./components/RestaurantMenu";
 import { UserContext } from "./utils/UserContext";
 import { ThemeContext } from "./utils/ThemeContext";
 import { Provider } from 'react-redux';
 import { appStore } from "./redux/appStore";
-import { Cart } from "./components/Cart";
-// import Grocery from "./components/Grocery";
+import RestaurantMenu from "./components/RestaurantMenu";
+import Cart from "./components/Cart";
+
 
 
 const AppLayout = () => {
 
     const [userName, setUserName] = useState();
-    const [theme, setTheme] = useState();
+    const [theme, setTheme] = useState('');
 
     useEffect(() => {
         const data = {

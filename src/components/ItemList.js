@@ -4,7 +4,7 @@ import { addItems } from "../redux/cartSlice";
 
 
 export const ItemList = (props) => {
-  console.log("ITEM", props);
+  // console.log("ITEM", props);
   const dispatch = useDispatch();
 
   handleClick = (item) => {
@@ -14,7 +14,7 @@ export const ItemList = (props) => {
   return (
     <div>
       {props.data.itemCards.map((item) => (
-        <div className="border-b-2" key={item.card.info?.id}>
+        <div data-testid="resItem" className="border-b-2" key={item.card.info?.id}>
           <div className="w-full flex flex-col text-left m-2">
             <div className="flex justify-between">
               <div className="w-9/12">
